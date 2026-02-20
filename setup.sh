@@ -21,6 +21,14 @@ echo "Setting up systemd service for Token Metrics Exporter..."
 echo "Project Directory: $PROJECT_DIR"
 echo "Running as User: $RUN_USER"
 
+# Initialize antigravity-accounts.json if it doesn't exist
+ACCOUNTS_FILE="$PROJECT_DIR/antigravity-accounts.json"
+if [ ! -f "$ACCOUNTS_FILE" ]; then
+    echo "Creating empty antigravity-accounts.json..."
+    echo '{ "accounts": [] }' > "$ACCOUNTS_FILE"
+    chown $RUN_USER "$ACCOUNTS_FILE"
+fi
+
 # Create the systemd service file
 cat << EOF > "$SERVICE_FILE"
 [Unit]
