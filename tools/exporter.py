@@ -6,7 +6,7 @@ import requests
 from pathlib import Path
 from dotenv import load_dotenv
 from prometheus_client import start_http_server, Gauge
-from .authenticator import authenticate_and_save
+from authenticator import authenticate_and_save
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
